@@ -1,0 +1,6 @@
+#!/bin/bash
+
+list($message, $date) = explode('|', exec('git log -1 --pretty=format:"%as|%s" HEAD'));
+
+echo "message: $message"
+exit 0
