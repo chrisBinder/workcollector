@@ -1,6 +1,9 @@
 #!/bin/bash
 
-list($message, $date) = explode('|', exec('git log -1 --pretty=format:"%as|%s" HEAD'));
+outputFile=CHANGEME
 
-echo "message: $message"
+IFS='|' read -r -a array <<< "$(git log -1 --pretty=format:"%as|%s" HEAD)"
+
+echo -e "${array[0]} : ${array[1]}\n$(cat ${outputFile})" > ${outputFile}
+
 exit 0
